@@ -1,0 +1,104 @@
+<section>
+  <div class="jumbotron jumbotron-fluid bg-primary">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-left text-white montserrat py-1">
+          <h1 class="display-4 font-weight-bold">My Profile</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 text-center py-4">
+        <h4 class="font-weight-bold">Stats</h4>
+      </div>
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="card bg-light mb-3">
+          <div class="card-header">Completed Activities</div>
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-heartbeat fa-2x" style="color:red;"></i> <span class="float-right txt-30"><%= @done %></span></h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="card bg-light mb-3">
+          <div class="card-header">Total Activities</div>
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-rocket fa-2x" style="color:blue;"></i> <span class="float-right txt-30"><%= @activity_count %></span></h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-12">
+        <div class="card bg-light mb-3">
+          <div class="card-header">Last Workout</div>
+          <div class="card-body">
+            <h5 class="card-title"><i class="fas fa-clock fa-2x" style="color:green;"></i> <span class="float-right txt-30"><%= @last.date.to_time.strftime('%d %b, %Y') %></span></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="container-fluid pb-8">
+    <div class="row">
+      <div class="col-12 text-center">
+        <h4 class="font-weight-bold pb-4 pt-6">All My Activities</h4>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center flex-wrap">
+      <% @exercises.each do |exercise| %>
+      <% @activities.each do |activity| %>
+      <% if exercise.activity_id  == activity.id %>
+      <div class="card m-3" style="max-width:250px; min-width:220px;">
+        <img src="<%= activity.image %>" class="m-auto pt-3 pb-4" style="width:100px;border-bottom:1px solid gray;">
+        <div class="card-body pt-4 px-3">
+          <h5 class="card-title"><%= activity.title %></h5>
+          <h6 class="card-subtitle mb-2 text-muted small">
+          Duration: <%= exercise.duration %>  Mood: <%= exercise.mood %>
+            <br>
+            Status: <%= exercise.status %>
+          </h6>
+          <p class="card-text txt-14">
+            <%= exercise.note.length <= 80 ? exercise.note.slice(0..80) : exercise.note.slice(0..80) + '...' %>
+          </p>
+          <%= link_to 'Edit', edit_activity_path(exercise), class: "card-link" %>
+          <a class="card-link text-danger pointer" data-toggle="modal" data-target="#exampleModal" data-delete='<%= link_to 'Yes, Delete', delete_activity_path(exercise), method: :delete, class: "btn btn-danger"%>'>Delete</a>
+        </div>
+      </div>
+      <% end %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <p class="modal-btn m-0"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+

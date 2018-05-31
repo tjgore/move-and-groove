@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Move and Groove</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" type="text/css" href="/css/designplate.css">
+  <!-- Font Awesome Icons -->
+  <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+  <!--Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,800" rel="stylesheet">
+  <link rel="icon" href="/moveandgroove.ico"/>
+  <style>
+    .form-group>span, .star {
+      color: red;
+    }
+    .custom-control-input { z-index: 9000; }
+  </style>
+</head>
+
+<body class="open-sans">
+
+  <%= render "layouts/partials/msg" %>
+
+  <%= render "layouts/partials/nav" %>
+
+  <%= yield %>
+  
+  <%= render "layouts/partials/footer" %>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+  $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) 
+  var recipient = button.data('delete') 
+  var modal = $(this)
+  modal.find('.modal-btn').html(recipient)
+})
+</script>
+<script src="/js/easytimer.min.js"></script>
+<script>
+  var timer = new Timer();
+$('#chronoExample .startButton').click(function () {
+    timer.start({precision: 'secondTenths'});
+});
+$('#chronoExample .pauseButton').click(function () {
+    timer.pause();
+});
+$('#chronoExample .stopButton').click(function () {
+    timer.stop();
+    $('#chronoExample .values').html('00:00:00:00');
+
+});
+$('#chronoExample .resetButton').click(function () {
+    timer.reset();
+});
+timer.addEventListener('secondTenthsUpdated', function (e) {
+    $('#chronoExample .values').html(timer.getTimeValues().toString(['hours', 'minutes', 'seconds', 'secondTenths']));
+    
+});
+timer.addEventListener('started', function (e) {
+    $('#chronoExample .values').html(timer.getTimeValues().toString(['hours', 'minutes', 'seconds', 'secondTenths']));
+});
+timer.addEventListener('reset', function (e) {
+    $('#chronoExample .values').html(timer.getTimeValues().toString(['hours', 'minutes', 'seconds', 'secondTenths']));
+});
+
+</script>
+
+</html>

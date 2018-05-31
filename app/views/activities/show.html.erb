@@ -1,0 +1,58 @@
+<section>
+  <div class="jumbotron jumbotron-fluid bg-primary">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-left text-white montserrat py-1">
+          <h1 class="display-4 font-weight-bold">Show Activity</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section>
+  <div class="container pb-8">
+    <div class="row">
+      <div class="col-12 pt-4 text-center">
+       <img src="<%= @activity.image  %>" class="m-auto pt-3 pb-4" style="width:100px;border-bottom:1px solid gray;">
+       <h5 class="card-title pt-4"><%= @activity.title %></h5>
+       <h6 class="card-subtitle mb-2 text-muted small pt-2">
+        Duration: <%= @exercise.duration %>  Mood: <%= @exercise.mood %>
+        <br>
+        Status: <%= @exercise.status %>
+      </h6>
+      <div class="col-12 col-sm-12 p-0">
+      <p class="card-text txt-14 pt-2">
+        <%=  @exercise.note %>
+      </p>
+      <%= link_to 'Edit', edit_activity_path(@exercise), class: "card-link" %>
+          <a class="card-link text-danger pointer" data-toggle="modal" data-target="#exampleModal" data-delete='<%= link_to 'Yes, Delete', delete_activity_path(@exercise), method: :delete, class: "btn btn-danger"%>'>Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <p class="modal-btn m-0"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->

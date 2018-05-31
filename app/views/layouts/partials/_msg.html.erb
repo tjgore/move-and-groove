@@ -1,0 +1,15 @@
+<% if  !flash.empty? %>
+  <section class="bg-success">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="text-white text-center pt-2">
+            <% flash.each do |name, msg| %>
+            <p class="alert"><%= msg %></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <% end %>

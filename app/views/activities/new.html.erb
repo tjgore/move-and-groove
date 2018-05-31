@@ -1,0 +1,69 @@
+<section>
+  <div class="jumbotron jumbotron-fluid bg-primary">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-left text-white montserrat py-1">
+          <h1 class="display-4 font-weight-bold">Add a new Activity</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<%= render 'activities/partials/error_msg'%>
+
+<section>
+  <div class="container pb-8">
+    <div class="row">
+      <div class="col-12 pt-4">
+        <p class="text-right">
+          <%= link_to 'Back to Profile', profile_path, class: "btn-link" %>
+          <%= link_to 'View Activities', activities_path, class: "btn-link" %>
+        </p>
+        <%= form_for @exercise, url: {action: "create"} do |f| %>
+        <div class="form-group">
+          <span class="">*</span>
+          <%= f.label :activity_id  %>
+          <%= f.collection_select :activity_id, Activity.order(:id), :id, :title, {:include_blank => 'Pick an activity'}, {:class => "form-control", :required => true} %>
+        </div>
+
+        <div class="form-group">
+         <span class="">*</span>
+         <%= f.label :status %>
+         <%= f.select :status, options_for_select([['inprogress', 'Inprogress'], ['complete', 'Complete'], ['incomplete', 'Incomplete']], @exercise.status), {:include_blank => "Select a status"}, {:class => "form-control", required: true} %>
+       </div>
+
+       <div class="form-group">
+         <span class="">*</span>
+         <%= f.label :date %>
+         <%= f.date_field :date, class: "form-control", required: true %>
+       </div>
+
+       <div class="form-group">
+         <span class="">*</span>
+         <%= f.label :duration %>
+         <%= f.text_field :duration, class: "form-control", required: true %>
+       </div>
+
+       <div class="form-group">
+         <span class="">*</span>
+         <%= f.label :mood %>
+         <%= f.select :mood, options_for_select([['good', 'Good'], ['energized', 'Energized'], ['bad', 'Bad'], ['lazy', 'Lazy'], ['sore', 'Sore']], @exercise.mood), {:include_blank => "Select your mood"}, {:class => "form-control", required: true} %>
+       </div>
+
+       <div class="form-group pt-3">
+        <%= f.label :note %>
+        <%= f.text_area :note, size: "30x8", placeholder: "Describe your work out and leave tips for improvement", class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit class: "btn btn-success px-3" %>
+      </div>
+
+      <% end %>
+
+
+    </div>
+  </div>
+</div>
+</section>
