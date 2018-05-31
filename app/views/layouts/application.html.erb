@@ -2,6 +2,8 @@
 <html>
 <head>
   <title>Move and Groove</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
@@ -39,39 +41,39 @@
 
 <script>
   $('#exampleModal').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) 
-  var recipient = button.data('delete') 
-  var modal = $(this)
-  modal.find('.modal-btn').html(recipient)
-})
+    var button = $(event.relatedTarget) 
+    var recipient = button.data('delete') 
+    var modal = $(this)
+    modal.find('.modal-btn').html(recipient)
+  })
 </script>
 <script src="/js/easytimer.min.js"></script>
 <script>
   var timer = new Timer();
-$('#chronoExample .startButton').click(function () {
+  $('#chronoExample .startButton').click(function () {
     timer.start({precision: 'secondTenths'});
-});
-$('#chronoExample .pauseButton').click(function () {
+  });
+  $('#chronoExample .pauseButton').click(function () {
     timer.pause();
-});
-$('#chronoExample .stopButton').click(function () {
+  });
+  $('#chronoExample .stopButton').click(function () {
     timer.stop();
     $('#chronoExample .values').html('00:00:00:00');
 
-});
-$('#chronoExample .resetButton').click(function () {
+  });
+  $('#chronoExample .resetButton').click(function () {
     timer.reset();
-});
-timer.addEventListener('secondTenthsUpdated', function (e) {
+  });
+  timer.addEventListener('secondTenthsUpdated', function (e) {
     $('#chronoExample .values').html(timer.getTimeValues().toString(['hours', 'minutes', 'seconds', 'secondTenths']));
     
-});
-timer.addEventListener('started', function (e) {
+  });
+  timer.addEventListener('started', function (e) {
     $('#chronoExample .values').html(timer.getTimeValues().toString(['hours', 'minutes', 'seconds', 'secondTenths']));
-});
-timer.addEventListener('reset', function (e) {
+  });
+  timer.addEventListener('reset', function (e) {
     $('#chronoExample .values').html(timer.getTimeValues().toString(['hours', 'minutes', 'seconds', 'secondTenths']));
-});
+  });
 
 </script>
 
