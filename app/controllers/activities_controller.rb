@@ -29,7 +29,7 @@ class ActivitiesController < ApplicationController
     @exercise.user_id = current_user.id;
     if @exercise.save
       flash[:alert] = "Your activity was successfully added"
-      redirect_to show_activity_path
+      redirect_to show_activity_path(@exercise)
     else
       render 'new'
     end
