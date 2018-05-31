@@ -1,0 +1,15 @@
+<% if @exercise.errors.any? %>
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 bg-danger">
+       <div class="text-white text-center pt-2">
+          <% @exercise.errors.full_messages.each do |e| %>
+          <p class="alert"><%= e %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<% end %>

@@ -6,7 +6,7 @@ class ActivitiesController < ApplicationController
     @activities = current_user.activities
 
     @activity_count = @activities.count
-    @last = Exercise.where(user_id: current_user.id).order(:updated_at).last
+    @last = Exercise.where(user_id: current_user.id).order(date: :asc).last
     @done = Exercise.where(user_id: current_user.id).where(status: 'Complete').count
   end
 
@@ -53,8 +53,8 @@ class ActivitiesController < ApplicationController
   end
 
   def show
-    @exercise = Exercise.where(user_id: current_user.id).first
-    @activity = current_user.activities.first
+    @exercise = Exercise.where(user_id: current_user.id).find(params[:id])
+    @activity = current_user.activities.find(@exercise.activity_id)
   end
 
   def destroy
