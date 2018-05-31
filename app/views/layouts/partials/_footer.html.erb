@@ -12,8 +12,10 @@
           <ul class="list-inline text-primary pt-4">
             <li class="list-inline-item"><%= link_to 'About Us', about_path %></li>|
             <li class="list-inline-item">Contact Us</li>|
+            <% if !current_user %>
             <li class="list-inline-item"><%= link_to 'Sign In', new_user_session_path %></li>|
             <li class="list-inline-item"><%= link_to 'Sign Up', new_user_registration_path %></li>|
+            <% end %>
             <li class="list-inline-item">Privacy Policy</li>
           </ul>
           <p class="small">Copyright 2018</p>
