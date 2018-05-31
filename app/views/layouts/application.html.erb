@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
+  <%= javascript_include_tag 'application' %>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <link rel="stylesheet" type="text/css" href="/css/designplate.css">
@@ -45,6 +46,9 @@
     var modal = $(this)
     modal.find('.modal-btn').html(recipient)
   })
+  $(".menu-closebtn").on("click", function(){
+    $(".collapse").removeClass("show");
+  });
 </script>
 <script src="/js/easytimer.min.js"></script>
 <script>
