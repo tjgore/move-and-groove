@@ -21,8 +21,9 @@
           <h5 class="card-title"><%= activity.title %></h5>
           <h6 class="card-subtitle mb-2 text-muted small">Duration: <%= activity.duration %>  Difficulty: <%= activity.difficulty %>/5</h6>
           <p class="card-text txt-14"><%= activity.description %></p>
-         <!--  <a href="#" class="card-link">Start</a> -->
-          <%= link_to 'Start', new_activity_path(activity), class: "card-link" %>
+          <p class="text-center">
+            <%= link_to 'Start', new_activity_path(activity), class: "card-link" %>
+          </p>
         </div>
       </div>
       <% end %>
