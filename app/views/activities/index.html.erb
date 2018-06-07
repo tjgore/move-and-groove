@@ -20,7 +20,7 @@
         <div class="card bg-light mb-3">
           <div class="card-header">Completed Activities</div>
           <div class="card-body">
-            <h5 class="card-title"><i class="fas fa-heartbeat fa-2x" style="color:red;"></i> <span class="float-right txt-30"><%= @done %></span></h5>
+            <h5 class="card-title"><img src="https://png.icons8.com/color/100/000000/triceps.png" style="width:65px;"> <span class="float-right txt-30"><%= @done %></span></h5>
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@
         <div class="card bg-light mb-3">
           <div class="card-header">Total Activities</div>
           <div class="card-body">
-            <h5 class="card-title"><i class="fas fa-rocket fa-2x" style="color:blue;"></i> <span class="float-right txt-30"><%= @activity_count %></span></h5>
+            <h5 class="card-title"><img src="https://png.icons8.com/color/100/000000/sports-mode.png" style="width:65px;"> <span class="float-right txt-30"><%= @activity_count %></span></h5>
           </div>
         </div>
       </div>
@@ -36,7 +36,7 @@
         <div class="card bg-light mb-3">
           <div class="card-header">Last Workout</div>
           <div class="card-body">
-            <h5 class="card-title"><i class="fas fa-clock fa-2x" style="color:green;"></i> <span class="float-right txt-30"><%= @last ? @last.date.to_time.strftime('%d %b, %Y') : 0 %></span></h5>
+            <h5 class="card-title"><img src="https://png.icons8.com/color/100/000000/calendar.png" style="width:65px;"> <span class="float-right txt-30"><%= @last ? @last.date.to_time.strftime('%d %b, %Y') : 0 %></span></h5>
           </div>
         </div>
       </div>
