@@ -1,5 +1,18 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  Rails.application.routes.default_url_options[:host] = 'fitness-groove2.herokuapp.com'
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'fitness-groove2.herokuapp.com' }
+
+  config.action_mailer.smtp_settings = {
+  :user_name => '3c1dc7593e1ea3',
+  :password => '63a129d6c2f510',
+  :address => 'smtp.mailtrap.io',
+  :domain => 'smtp.mailtrap.io',
+  :port => '2525',
+  :authentication => :cram_md5
+}
 
   # Code is not reloaded between requests.
   config.cache_classes = true
