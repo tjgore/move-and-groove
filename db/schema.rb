@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(version: 2018_05_28_035452) do
     t.string "duration"
     t.date "date"
     t.string "mood"
-    t.text "note"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
