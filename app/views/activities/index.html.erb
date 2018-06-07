@@ -65,9 +65,6 @@
             <br>
             Status: <%= exercise.status %>
           </h6>
-          <p class="card-text txt-14">
-            <%= exercise.note.length <= 80 ? exercise.note.slice(0..80) : exercise.note.slice(0..80) + '...' %>
-          </p>
           <%= link_to 'Edit', edit_activity_path(exercise), class: "card-link" %>
           <a class="card-link text-danger pointer" data-toggle="modal" data-target="#exampleModal" data-delete='<%= link_to 'Yes, Delete', delete_activity_path(exercise), method: :delete, class: "btn btn-danger"%>'>Delete</a>
         </div>

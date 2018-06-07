@@ -15,7 +15,7 @@
 <section>
   <div class="container pb-8">
     <div class="row">
-    <div class="col-12 pt-4">
+      <div class="col-12 pt-4">
         <p class="text-right">
           <%= link_to 'Back to Profile', profile_path, class: "btn-link" %>
         </p>
@@ -27,19 +27,35 @@
         </div>
 
         <div class="form-group">
-         <span class="">*</span>
-         <%= f.label :status %>
-         <%= f.select :status, options_for_select([['inprogress', 'Inprogress'], ['complete', 'Complete'], ['incomplete', 'Incomplete']], @exercise.status), {:include_blank => "Select a status"}, {:class => "form-control", required: true} %>
+          <span class="">*</span>
+          <%= f.label :status %>
+          <%= f.select :status, options_for_select([['complete', 'Complete'], ['incomplete', 'Incomplete']], @exercise.status), {:include_blank => "Select a status"}, {:class => "form-control", required: true} %>
+        </div>
+
+
+        <div class="form-group">
+          <span class="">*</span>
+          <%= f.label :date %>
+          <%= f.date_field :date, class: "form-control", required: true %>
+        </div>
+
+        <p>
+        <span style="color:red;">*</span>
+          Duration
+        </p>
+
+        <div class="form-inline pb-2">
+         <div class="form-group">
+           <input type="number" id="hrs"  max="99" min="0" class="howLong form-control mb-2 mr-sm-2" value="00">
+           <label class="mr-3">Hrs</label>
+           <input id="mins" type="number" max="60" min="0" class="howLong form-control mb-2 mr-sm-2" id="hour" value="00">
+           <label class="mr-3">Mins</label>
+           <input id="secs" type="number" max="60" min="0" class=" howLong form-control mb-2 mr-sm-2" id="hour" value="00">
+           <label>Secs</label>
+         </div>
        </div>
 
-
-       <div class="form-group">
-         <span class="">*</span>
-         <%= f.label :date %>
-         <%= f.date_field :date, class: "form-control", required: true %>
-       </div>
-
-       <div class="form-group">
+       <div class="form-group d-none">
          <span class="">*</span>
          <%= f.label :duration %>
          <%= f.text_field :duration, class: "form-control", required: true %>
@@ -48,15 +64,10 @@
        <div class="form-group">
          <span class="">*</span>
          <%= f.label :mood %>
-         <%= f.select :mood, options_for_select([['good', 'Good'], ['energized', 'Energized'], ['bad', 'Bad'], ['lazy', 'Lazy'], ['sore', 'Sore']], @exercise.mood), {:include_blank => "Select your mood"}, {:class => "form-control", required: true} %>
+         <%= f.select :mood, options_for_select([['okay', 'Okay'], ['good', 'Good'], ['energized', 'Energized'], ['bad', 'Bad'], ['lazy', 'Lazy'], ['sore', 'Sore']], @exercise.mood), {:include_blank => "Select your mood"}, {:class => "form-control", required: true} %>
        </div>
 
-       <div class="form-group pt-3">
-        <%= f.label :note %>
-        <%= f.text_area :note, size: "30x8", placeholder: "Describe your work out and leave tips for improvement", class: "form-control" %>
-      </div>
-
-      <div class="form-group">
+       <div class="form-group">
         <%= f.submit class: "btn btn-success px-3" %>
       </div>
 

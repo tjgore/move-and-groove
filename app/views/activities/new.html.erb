@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-12 text-left text-white montserrat py-1">
-          <h1 class="display-4 font-weight-bold">Add a new Activity</h1>
+          <h1 id="pageTitle" class="display-4 font-weight-bold">StopWatch</h1>
         </div>
       </div>
     </div>
@@ -12,7 +12,61 @@
 
 <%= render 'activities/partials/error_msg'%>
 
+
 <section>
+  <div class="container pb-8 mb-8">
+    <div class="row" style="overflow:hidden;">
+      <div id="timerContainer" style="position:relative;" class="col-12 pt-4 text-center">
+      <p class="h1 pb-3 montserrat font-weight-bold">Start your activity!</p>
+       <div id="chronoExample">
+        <div id="time" class="values txt-50 txt-md-50 pb-3">00:00:00:00</div>
+        <div>
+          <button class="startButton btn btn-success">Start</button>
+          <button class="pauseButton btn btn-primary">Pause</button>
+          <button class="stopButton btn btn-danger">Stop</button>
+        </div>
+        <div class="mt-5">
+          <p class="h2 pb-3 pt-5">Did you complete your activity?</p>
+          <button id="complete" class="pauseButton btn btn-primary" onclick="getTimer(this)">Complete</button>
+          <button class="stopButton btn btn-danger" onclick="getTimer(this)">Incomplete</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="emojiContainer" class="col-12 pt-4 text-center px-0" style="position:relative;left:100%;display:none;">
+    <p class="h2 pb-2"> How do you feel about your workout?</p>
+      <div class="d-flex justify-content-around flex-wrap">
+        <div class="m-4" id="Energized" onclick="getMood(this)">
+          <img src="https://png.icons8.com/color/96/000000/lol.png" class="d-block img-fluid pb-2" style="width:130px;">
+          <button class="btn btn-primary btn-sm">Energized</button>
+        </div>
+        <div class="m-4" id="Good" onclick="getMood(this)">
+          <img src="https://png.icons8.com/color/96/000000/happy.png" class="d-block img-fluid pb-2" style="width:130px;">
+          <button class="btn btn-primary btn-sm">Good</button>
+        </div>
+        <div class="m-4" id="Okay" onclick="getMood(this)">
+          <img src="https://png.icons8.com/color/96/000000/neutral-emoticon.png" class="d-block img-fluid pb-2" style="width:130px;">
+          <button class="btn btn-primary btn-sm">Okay</button>
+        </div>
+        <div class="m-4" id="Bad" onclick="getMood(this)">
+          <img src="https://png.icons8.com/color/96/000000/sad.png" class="d-block img-fluid pb-2" style="width:130px;">
+          <button class="btn btn-danger btn-sm">Bad</button>
+        </div>
+        <div class="m-4" id="Lazy" onclick="getMood(this)">
+          <img src="https://png.icons8.com/color/96/000000/bored.png" class="d-block img-fluid pb-2" style="width:130px;">
+          <button class="btn btn-danger btn-sm">Lazy</button>
+        </div>
+        <div class="m-4" id="Sore" onclick="getMood(this)">
+          <img src="https://png.icons8.com/dotty/80/000000/bored.png" class="d-block img-fluid pb-2" style="width:130px;">
+          <button class="btn btn-danger btn-sm">Sore</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="d-none">
   <div class="container pb-8">
     <div class="row">
       <div class="col-12 pt-4">
@@ -30,38 +84,32 @@
         <div class="form-group">
          <span class="">*</span>
          <%= f.label :status %>
-         <%= f.select :status, options_for_select([['inprogress', 'Inprogress'], ['complete', 'Complete'], ['incomplete', 'Incomplete']], @exercise.status), {:include_blank => "Select a status"}, {:class => "form-control", required: true} %>
+         <%= f.select :status, options_for_select([['complete', 'Complete'], ['incomplete', 'Incomplete']], "Incomplete"), {}, {:class => "form-control", required: true} %>
        </div>
 
        <div class="form-group">
          <span class="">*</span>
          <%= f.label :date %>
-         <%= f.date_field :date, class: "form-control", required: true %>
+         <%= f.date_field :date, class: "form-control", required: true, id: "date" %>
        </div>
 
        <div class="form-group">
          <span class="">*</span>
          <%= f.label :duration %>
-         <%= f.text_field :duration, class: "form-control", required: true %>
+         <%= f.text_field :duration, class: "form-control", required: true, value: "00:00:00", id: "duration" %>
        </div>
 
        <div class="form-group">
          <span class="">*</span>
          <%= f.label :mood %>
-         <%= f.select :mood, options_for_select([['good', 'Good'], ['energized', 'Energized'], ['bad', 'Bad'], ['lazy', 'Lazy'], ['sore', 'Sore']], @exercise.mood), {:include_blank => "Select your mood"}, {:class => "form-control", required: true} %>
+         <%= f.select :mood, options_for_select([['okay', 'Okay'], ['good', 'Good'], ['energized', 'Energized'], ['bad', 'Bad'], ['lazy', 'Lazy'], ['sore', 'Sore']], "Okay"), {}, {:class => "form-control", required: true, id: "mood"} %>
        </div>
-
-       <div class="form-group pt-3">
-        <%= f.label :note %>
-        <%= f.text_area :note, size: "30x8", placeholder: "Describe your work out and leave tips for improvement", class: "form-control" %>
-      </div>
 
       <div class="form-group">
         <%= f.submit class: "btn btn-success px-3" %>
       </div>
 
       <% end %>
-
 
     </div>
   </div>

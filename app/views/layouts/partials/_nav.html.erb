@@ -22,9 +22,6 @@
         <li class="nav-item ml-0 ml-lg-auto <%= current_page?(profile_path) ? 'active' : '' %>">
           <%= link_to 'Profile', profile_path , class: "nav-link" %>
         </li>
-        <li class="nav-item <%= current_page?(new_activity_path) ? 'active' : '' %>">
-          <%= link_to 'Add Activity', new_activity_path, class: "nav-link" %>
-        </li>
         <li class="nav-item <%= current_page?(activities_path) ? 'active' : '' %>">
           <%= link_to 'Activities', activities_path, class: "nav-link" %>
         </li>

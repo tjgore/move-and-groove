@@ -6,7 +6,6 @@ class CreateExercises < ActiveRecord::Migration[5.2]
       t.string :duration
       t.date :date
       t.string :mood
-      t.text :note
       t.string :status
 
       t.timestamps

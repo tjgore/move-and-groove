@@ -16,7 +16,9 @@
     <div class="d-flex justify-content-center flex-wrap">
       <% @activities.each do |activity| %>
       <div class="card m-3" style="max-width:250px; min-width:220px;">
-        <img src="<%= activity.image %>" class="m-auto pt-3 pb-4" style="width:100px;border-bottom:1px solid gray;">
+      <a href="/activity/new/<%= activity.id %>" class="m-auto">
+          <img src="<%= activity.image %>" class="pt-3 pb-4" style="width:100px;border-bottom:1px solid gray;">
+        </a>
         <div class="card-body pt-4 px-3">
           <h5 class="card-title"><%= activity.title %></h5>
           <h6 class="card-subtitle mb-2 text-muted small">Duration: <%= activity.duration %>  Difficulty: <%= activity.difficulty %>/5</h6>
@@ -26,6 +28,7 @@
           </p>
         </div>
       </div>
+
       <% end %>
 
     </div>
