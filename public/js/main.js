@@ -26,10 +26,11 @@ $('#chronoExample .stopButton').click(function () {
   //$('#chronoExample .values').html('00:00:00:00');
   $('.startButton').show();
   $('.stopButton').hide();
+  if($("#intimerContainer").length){
   $("#intimerContainer").fadeToggle("fast", function() {
     $("#completeContainer").fadeToggle();
   });
-  
+  }
 });
 $('#chronoExample .resetButton').click(function () {
   timer.reset();

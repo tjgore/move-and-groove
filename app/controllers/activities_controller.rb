@@ -3,7 +3,7 @@ class ActivitiesController < ApplicationController
 
   def index
     @exercises = Exercise.where(user_id: current_user.id)
-    @activities = current_user.activities
+    @activities = Activity.all
 
     @activity_count = @activities.count
     @last = Exercise.where(user_id: current_user.id).order(date: :asc).last
