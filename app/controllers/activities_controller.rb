@@ -4,8 +4,9 @@ class ActivitiesController < ApplicationController
   def index
     @exercises = Exercise.where(user_id: current_user.id)
     @activities = Activity.all
+    @user_activities = current_user.activities
 
-    @activity_count = @activities.count
+    @activity_count = @user_activities.count
     @last = Exercise.where(user_id: current_user.id).order(date: :asc).last
     @done = Exercise.where(user_id: current_user.id).where(status: 'Complete').count
   end
