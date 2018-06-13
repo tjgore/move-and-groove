@@ -5,6 +5,7 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   var modal = $(this)
   modal.find('.modal-btn').html(recipient)
 })
+// mobile menu
 $(".menu-closebtn").on("click", function(){
   $(".collapse").removeClass("show");
 });
