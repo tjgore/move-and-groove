@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  root 'pages#index'
   devise_for :users, controllers: { registrations: "registrations" }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  root 'pages#index'
 
   get '/activity/show/:id' => 'activities#show', :as => :show_activity
   get '/activity/:id/edit' => 'activities#edit', :as => :edit_activity
