@@ -1,24 +1,15 @@
-# README
+## Move and Groove
+Move and Groove is a fitness tracker site that allows users to sign up and log activities of different kinds.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### Getting started
+```bash
+bundle install
+rails db:migrate
+rails db:seed
+rails s
+```
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Docker container to run the rails app locally
+```bash
+$ docker pull tjwesleygore/rubyonrails:1.1
+```
